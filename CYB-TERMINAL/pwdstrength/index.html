@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberVault | Password Auditor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="container">
+        <header>
+            <h1><span class="glitch">VULNERABILITY AUDITOR</span></h1>
+            <p>INTERNAL SECURITY PROTOCOL v4.0</p>
+        </header>
+
+        <div class="main-card">
+            <div class="input-section">
+                <input type="text" id="passInput" placeholder="ENTER PASSWORD TO AUDIT..." autocomplete="off">
+                <div id="strengthMeter"><div id="strengthFill"></div></div>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="stat-box">
+                    <span class="label">ENTROPY</span>
+                    <span id="entropyVal" class="value">0 bits</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">CRACK TIME</span>
+                    <span id="crackTime" class="value">0s</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">THREAT LEVEL</span>
+                    <span id="threatLevel" class="value">UNKNOWN</span>
+                </div>
+            </div>
+
+            <div class="feedback-section">
+                <h3>VULNERABILITY REPORTS:</h3>
+                <ul id="feedbackList">
+                    <li>Waiting for input...</li>
+                </ul>
+            </div>
+
+            <div class="suggestion-section">
+                <h3>ENHANCED SUGGESTIONS:</h3>
+                <div id="suggestionBox" class="suggestion-item">
+                    Type a password to generate hardened variants.
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Forensics | Magic Number ID</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>FILE SIGNATURE ANALYZER</h1>
+        <p class="subtitle">Cybersecurity Tool: Identifying files by Hex Headers</p>
+        
+        <div class="upload-section">
+            <input type="file" id="fileInput" hidden>
+            <label for="fileInput" class="custom-button">SELECT FILE TO SCAN</label>
+        </div>
+
+        <div id="results" class="hidden">
+            <div class="result-item"><strong>Filename:</strong> <span id="fileName">-</span></div>
+            <div class="result-item"><strong>Reported Extension:</strong> <span id="fileExt">-</span></div>
+            <div class="result-item"><strong>Actual Identity:</strong> <span id="trueType">-</span></div>
+            <div class="hex-container">
+                <p>Header Bytes (Hex):</p>
+                <code id="hexDump">00 00 00 00</code>
+            </div>
+            <div id="securityWarning"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER_CORE | MISSION CONTROL</title>
+    <style>
+        body {
+            margin: 0;
+            background: #020a02;
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ff41;
+            overflow: hidden;
+            text-transform: uppercase;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* CRT SCANLINE EFFECT */
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        header {
+            padding: 10px 20px;
+            border-bottom: 1px solid #00ff41;
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0, 20, 0, 0.9);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr 320px;
+            flex-grow: 1;
+            gap: 15px;
+            padding: 15px;
+            overflow: hidden;
+        }
+
+        .side-panel {
+            border: 1px solid #004400;
+            background: rgba(0, 5, 0, 0.95);
+            padding: 15px;
+            font-size: 0.75rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-header {
+            border-bottom: 1px solid #00ff41;
+            margin-bottom: 12px;
+            padding-bottom: 5px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        #display-container {
+            border: 2px solid #00ff41;
+            background: #000;
+        }
+
+        iframe { width: 100%; height: 100%; border: none; }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: #000;
+            border-top: 1px solid #004400;
+        }
+
+        button {
+            background: transparent;
+            border: 1px solid #00ff41;
+            color: #00ff41;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+
+        button:hover {
+            background: #00ff41;
+            color: #000;
+            box-shadow: 0 0 20px #00ff41;
+        }
+
+        /* INTEL TEXT STYLING */
+        #intel-content {
+            line-height: 1.6;
+            color: #00ff41;
+            text-align: justify;
+        }
+
+        .intel-highlight { color: #fff; font-weight: bold; display: block; margin-top: 10px; }
+
+        #log-stream { flex-grow: 1; overflow: hidden; font-size: 0.65rem; color: #008f11; }
+    </style>
+</head>
+<body>
+
+    <div class="scanlines"></div>
+
+    <header>
+        <div style="font-weight:bold; letter-spacing:3px;">OJT PROJECT</div>
+        <div id="digital-clock">00:00:00</div>
+    </header>
+
+    <div class="dashboard-grid">
+        <aside class="side-panel">
+            <div class="panel-header">TERMINAL INFO</div>
+            <div id="fingerprint-content">
+                OS: <span id="os-val">...</span><br>
+                RES: <span id="res-val">...</span><br>
+                NET: <span id="net-val">ONLINE</span><br>
+            </div>
+            
+            <div class="panel-header" style="margin-top:20px;">ACTIVITY LOG</div>
+            <div id="log-stream">> WAITING_FOR_INPUT...</div>
+        </aside>
+
+        <main id="display-container">
+            <iframe id="project-frame" src="about:blank"></iframe>
+        </main>
+
+        <aside class="side-panel" id="intel-panel">
+            <div class="panel-header" id="intel-title">GLOBAL THREAT INTEL</div>
+            <div id="intel-content">
+                Cybersecurity is the practice of protecting systems from digital attacks. These three modules are critical for a layered defense:
+                <br><br>
+                1. <span class="intel-highlight">FILE INTEGRITY:</span> Detecting hidden payloads within seemingly innocent media.
+                <br>
+                2. <span class="intel-highlight">AUTHENTICATION:</span> Mathematical validation of entry secrets (Entropy).
+                <br>
+                3. <span class="intel-highlight">REACTION TIME:</span> Training the mind to neutralize incoming threats before a breach occurs.
+            </div>
+            <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid #004400; font-size: 0.6rem; opacity: 0.6;">
+                STATUS: ENCRYPTED_FEED_ACTIVE
+            </div>
+        </aside>
+    </div>
+
+    <nav class="nav-bar">
+        <button onclick="loadProject('magic-identifier')">MAGIC-ID</button>
+        <button onclick="loadProject('pwdstrength')">PWD-Strength</button>
+        <button onclick="loadProject('cybgame')">cybtype</button>
+    </nav>
+
+    <script>
+        const projectIntel = {
+            'magic-identifier': {
+                title: "INTEL: MAGIC ID SCANNER",
+                body: "Steganography and Polyglot files are common hacker tactics. This tool identifies the true file signature (Magic Bytes) regardless of extension. <br><br><span class='intel-highlight'>THREAT:</span> A .jpg may actually be a malicious .exe script. This module exposes the hidden reality."
+            },
+            'pwdstrength': {
+                title: "INTEL: ENTROPY ANALYSIS",
+                body: "Standard length checks are obsolete. This module calculates Shannon Entropy to determine how many bits of 'chaos' a password contains.<br><br><span class='intel-highlight'>FORMULA:</span> More randomness equals higher resistance to Brute-Force and Dictionary attacks."
+            },
+            'cybgame': {
+                title: "INTEL: REACTION TRAINING",
+                body: "A gamified simulation of a server breach. Weak passwords rain down from the cloud. Failure to neutralize them results in a 'BREACHED' state.<br><br><span class='intel-highlight'>MISSION:</span> Eliminate the threats before they touch the internal network surface."
+            }
+        };
+
+        function loadProject(folder) {
+            const frame = document.getElementById('project-frame');
+            const intelTitle = document.getElementById('intel-title');
+            const intelBody = document.getElementById('intel-content');
+            
+            // Load the code
+            frame.src = `./${folder}/index.html`;
+
+            // Update Intel Panel
+            if(projectIntel[folder]) {
+                intelTitle.innerText = projectIntel[folder].title;
+                intelBody.innerHTML = projectIntel[folder].body;
+            }
+
+            addLog(`MOUNTED MODULE: ${folder}`);
+        }
+
+        function addLog(msg) {
+            const logBox = document.getElementById('log-stream');
+            const entry = document.createElement('div');
+            entry.innerHTML = `> [${new Date().toLocaleTimeString().split(' ')[0]}] ${msg}`;
+            logBox.prepend(entry);
+        }
+
+        // Initialize Stats
+        setInterval(() => {
+            document.getElementById('digital-clock').innerText = new Date().toLocaleTimeString();
+        }, 1000);
+        
+        document.getElementById('os-val').innerText = navigator.platform;
+        document.getElementById('res-val').innerText = `${window.screen.width}x${window.screen.height}`;
+    </script>
+</body>
+</html>

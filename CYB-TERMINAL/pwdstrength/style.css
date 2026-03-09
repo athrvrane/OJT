@@ -1,0 +1,60 @@
+body {
+    background: #0a0a0b;
+    color: #00ff41;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container { width: 90%; max-width: 800px; padding: 20px; }
+
+header { text-align: center; margin-bottom: 30px; border-bottom: 1px dashed #00ff41; padding-bottom: 10px; }
+
+.main-card {
+    background: #111;
+    border: 1px solid #00ff41;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+input {
+    width: 100%;
+    background: #000;
+    border: 1px solid #00ff41;
+    color: #fff;
+    padding: 15px;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+#strengthMeter { height: 4px; background: #222; width: 100%; margin-bottom: 20px; }
+#strengthFill { height: 100%; width: 0%; transition: 0.5s; background: #ff4444; }
+
+.analysis-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+.stat-box { background: #000; padding: 15px; border: 1px solid #333; text-align: center; }
+.label { display: block; font-size: 0.7rem; color: #888; margin-bottom: 5px; }
+.value { font-size: 1rem; font-weight: bold; }
+
+.feedback-section, .suggestion-section {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    margin-top: 15px;
+    border-left: 3px solid #00ff41;
+}
+
+h3 { font-size: 0.9rem; margin-top: 0; color: #888; }
+ul { list-style: none; padding: 0; font-size: 0.85rem; }
+li { margin-bottom: 5px; color: #ffbc00; }
+
+.suggestion-item {
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    background: #222;
+    padding: 10px;
+    text-align: center;
+}   

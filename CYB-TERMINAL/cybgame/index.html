@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMINAL DEFENDER v2.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+
+    <div id="menu">
+        <div class="terminal-header">AUTHENTICATION REQUIRED...</div>
+        <h1 class="glitch">CYBER DEFENSE SYSTEM</h1>
+        
+        <div class="options">
+            <label><input type="checkbox" id="lower" checked> [01] Lowercase</label>
+            <label><input type="checkbox" id="upper" checked> [02] Uppercase</label>
+            <label><input type="checkbox" id="numbers" checked> [03] Numbers</label>
+            <label><input type="checkbox" id="symbols"> [04] Special Char</label>
+        </div>
+
+        <div id="strengthInfo">ENCRYPTION: MODERATE</div>
+        <button id="startBtn">INITIALIZE PROTOCOL</button>
+    </div>
+
+    <div id="gameUI" style="display: none;">
+        <div class="top-bar">
+            <span>SEC_LEVEL: <span id="levelDisplay">1</span></span>
+            <span>UPLINK: ACTIVE</span>
+            <span>ENEMIES_NEUTRALIZED: <span id="scoreDisplay">0</span></span>
+        </div>
+        <div class="breach-container">
+            <div class="breach-label">SYSTEM BREACH PROGRESS</div>
+            <div id="breachBar"><div id="breachFill"></div></div>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="gameOver" style="display: none;">
+        <h2 class="alert">CRITICAL SYSTEM FAILURE</h2>
+        <p id="finalScore"></p>
+        <button id="restartBtn">REBOOT SYSTEM</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
